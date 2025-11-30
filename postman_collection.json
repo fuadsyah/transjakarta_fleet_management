@@ -1,0 +1,152 @@
+{
+	"info": {
+		"_postman_id": "fleet-management-api",
+		"name": "Fleet Management API",
+		"description": "API collection for Fleet Management Backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Health Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/health",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"health"
+					]
+				},
+				"description": "Check if the API is healthy and running"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Latest Location",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/vehicles/{{vehicle_id}}/location",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"vehicles",
+						"{{vehicle_id}}",
+						"location"
+					]
+				},
+				"description": "Get the latest location of a vehicle"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Location History",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/vehicles/{{vehicle_id}}/history?start={{start_timestamp}}&end={{end_timestamp}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"vehicles",
+						"{{vehicle_id}}",
+						"history"
+					],
+					"query": [
+						{
+							"key": "start",
+							"value": "{{start_timestamp}}",
+							"description": "Start timestamp (Unix epoch)"
+						},
+						{
+							"key": "end",
+							"value": "{{end_timestamp}}",
+							"description": "End timestamp (Unix epoch)"
+						}
+					]
+				},
+				"description": "Get location history of a vehicle within a time range"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Location History (Sample)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/vehicles/B1234XYZ/history?start=0&end=9999999999",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"vehicles",
+						"B1234XYZ",
+						"history"
+					],
+					"query": [
+						{
+							"key": "start",
+							"value": "0"
+						},
+						{
+							"key": "end",
+							"value": "9999999999"
+						}
+					]
+				},
+				"description": "Get all location history of vehicle B1234XYZ"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "vehicle_id",
+			"value": "B1234XYZ",
+			"type": "string"
+		},
+		{
+			"key": "start_timestamp",
+			"value": "0",
+			"type": "string"
+		},
+		{
+			"key": "end_timestamp",
+			"value": "9999999999",
+			"type": "string"
+		}
+	]
+}
